@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="David Lindarte Burgos: petroleum engineer and energy data scientist. LNG price forecasting, portfolio optimisation and upstream oil and gas experience.">
+<style>
+:root{color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>David Lindarte Burgos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a log sheet. Single reading column, experience drawn as a well-log depth track from surface to data. */
+:root{
+  --paper:#f4f5f8;
+  --sheet:#ffffff;
+  --ink:#0e1a33;
+  --muted:#56607a;
+  --grid:#d9dde8;
+  --accent:#c7301d;      /* coverall red */
+  --curve:#c99317;       /* sodium rig-light gold */
+  --tint:#eceff6;
+  --night:#0b1736;       /* night sky over the rig */
+  --night-fg:#eef1fa;
+  --display:"Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#080f22; --sheet:#0f1a35; --ink:#e7ebf5; --muted:#99a3bd;
+    --grid:#1f2c4d; --accent:#ff6b55; --curve:#efc04e; --tint:#15224a;
+    --night:#050b1c; --night-fg:#eef1fa;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#080f22; --sheet:#0f1a35; --ink:#e7ebf5; --muted:#99a3bd;
+  --grid:#1f2c4d; --accent:#ff6b55; --curve:#efc04e; --tint:#15224a;
+  --night:#050b1c; --night-fg:#eef1fa;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap{max-width:960px; margin:0 auto; padding-block:48px 64px; display:flex; flex-direction:column; gap:72px}
+a{color:var(--accent); text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+h1,h2,h3{font-family:var(--display); text-wrap:balance; margin:0; line-height:1.1}
+p{margin:0}
+.label{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+
+/* Hero */
+.hero{
+  background:var(--night); color:var(--night-fg);
+  display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:0;
+  border:1px solid var(--night);
+}
+.hero-text{display:flex; flex-direction:column; gap:16px; min-width:0; padding:40px 36px}
+.hero .label{color:#aab4d0}
+.hero h1{font-size:clamp(34px, 6vw, 56px); font-weight:800; font-stretch:112%; letter-spacing:-.01em}
+.hero .lede{font-size:19px; max-width:52ch; color:#d5dbec}
+.hero .lede em{font-style:normal; color:#f2c14e; font-weight:600}
+.portrait{margin:0; min-height:100%; position:relative}
+.portrait img{display:block; width:100%; height:100%; object-fit:cover; object-position:50% 30%; max-width:100%}
+.links{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
+.btn{
+  font-family:var(--mono); font-size:13px; text-decoration:none;
+  padding:8px 14px; border:1px solid #f2c14e; color:#f2c14e; background:transparent;
+}
+.btn:hover{background:#f2c14e; color:var(--night)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+.btn.primary:hover{filter:brightness(1.1); background:var(--accent); color:#fff}
+.hero a:focus-visible{outline-color:#f2c14e}
+.facts{
+  grid-column:1 / -1; display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
+  background:var(--grid); border-top:3px solid var(--accent);
+}
+.fact{background:var(--sheet); color:var(--ink); padding:14px 16px; display:flex; flex-direction:column; gap:4px}
+.fact b{font-family:var(--display); font-stretch:110%; font-size:18px; font-weight:700}
+.fact span{font-size:13px; color:var(--muted); line-height:1.4}
+
+/* Section heads */
+section{display:flex; flex-direction:column; gap:24px}
+.sec-head{display:flex; align-items:baseline; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:10px}
+.sec-head h2{font-size:28px; font-weight:800; font-stretch:118%}
+.sec-head .label{margin-left:auto}
+
+/* Projects */
+.project{
+  background:var(--sheet); border:1px solid var(--grid);
+  display:grid; grid-template-columns:minmax(0,1fr) 260px;
+}
+.project-main{padding:28px; display:flex; flex-direction:column; gap:16px; min-width:0}
+.project h3{font-size:24px; font-weight:750; font-stretch:108%}
+.project .kicker{display:flex; flex-wrap:wrap; gap:8px 14px}
+.project ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px}
+.project li::marker{color:var(--curve)}
+.spec{
+  border-left:1px solid var(--grid); background:var(--tint);
+  padding:24px 22px; display:flex; flex-direction:column; gap:14px; font-size:14px;
+}
+.spec dl{margin:0; display:flex; flex-direction:column; gap:12px}
+.spec dt{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.spec dd{margin:2px 0 0; line-height:1.45}
+.formula{font-family:var(--mono); font-size:14px; color:var(--accent)}
+.pipeline{display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-family:var(--mono); font-size:12.5px}
+.pipeline span{border:1px solid var(--grid); padding:4px 8px; background:var(--paper)}
+.pipeline i{font-style:normal; color:var(--muted)}
+
+.repos{display:grid; grid-template-columns:1fr; gap:16px}
+.repo{
+  border:1px solid var(--grid); background:var(--sheet); padding:20px 22px;
+  display:flex; flex-direction:column; gap:8px; text-decoration:none; color:var(--ink);
+}
+.repo:hover{border-color:var(--accent)}
+.repo b{font-family:var(--mono); font-weight:500; color:var(--accent); font-size:15px; overflow-wrap:anywhere}
+.repo span{color:var(--muted); font-size:14px}
+.lang{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:12px; color:var(--muted)}
+.lang::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--curve)}
+
+/* Experience as a well log, beside the rig photo */
+.exp-grid{display:grid; grid-template-columns:320px minmax(0,1fr); gap:20px; align-items:start}
+.photos{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 16px); display:flex; flex-direction:column; gap:16px}
+.rig{margin:0; background:var(--night); display:flex; flex-direction:column}
+.rig.desk img{aspect-ratio:1/1}
+.rig img{display:block; width:100%; max-width:100%; aspect-ratio:1100/1391; object-fit:cover}
+.rig figcaption{padding:12px 14px; font-family:var(--mono); font-size:12px; color:#aab4d0; line-height:1.45}
+.rig figcaption b{color:#f2c14e; font-weight:500}
+.log{display:grid; grid-template-columns:110px 34px minmax(0,1fr); background:var(--sheet); border:1px solid var(--grid)}
+.log-head{display:contents}
+.log-head div{padding:10px 14px; border-bottom:1px solid var(--grid); font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.zone{display:contents}
+.zone .depth{
+  padding:20px 14px; border-right:1px solid var(--grid);
+  font-family:var(--mono); font-size:12px; color:var(--muted); line-height:1.35;
+}
+.zone .track{position:relative; border-right:1px solid var(--grid); background:
+  repeating-linear-gradient(to bottom, transparent 0 11px, var(--grid) 11px 12px)}
+.zone .track::after{
+  content:""; position:absolute; left:50%; top:0; bottom:0; width:3px; transform:translateX(-50%);
+  background:var(--fill, var(--curve));
+}
+.zone .entry{padding:20px 22px; display:flex; flex-direction:column; gap:6px}
+.zone + .zone .depth,.zone + .zone .track,.zone + .zone .entry{border-top:1px solid var(--grid)}
+.entry h3{font-size:18px; font-weight:700; font-stretch:105%}
+.entry .org{font-family:var(--mono); font-size:13px; color:var(--accent)}
+.entry p{color:var(--muted); max-width:62ch}
+.z-data .track{--fill:var(--accent)}
+
+/* Data science competencies */
+.ds-intro{max-width:64ch; color:var(--muted); font-size:17px}
+.ds{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.cap{background:var(--sheet); border:1px solid var(--grid); border-top:3px solid var(--curve); padding:22px; display:flex; flex-direction:column; gap:12px; min-width:0}
+.cap h3{font-size:19px; font-weight:750; font-stretch:108%}
+.cap p{font-size:15px; color:var(--muted)}
+.cap .practice{margin-top:auto; padding-top:12px; border-top:1px dashed var(--grid); font-size:14px; color:var(--ink)}
+.cap .practice b{display:block; font-family:var(--mono); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:4px}
+div.repo{cursor:default}
+div.repo:hover{border-color:var(--grid)}
+div.repo b{color:var(--ink)}
+
+/* Skills */
+.skills{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid)}
+.skill{background:var(--sheet); padding:20px; display:flex; flex-direction:column; gap:10px}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chips span{font-size:13px; padding:3px 9px; background:var(--tint); border-radius:2px}
+
+footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; border-top:1px solid var(--grid); padding-top:18px; font-size:13px; color:var(--muted)}
+
+@media (max-width:860px){
+  .ds{grid-template-columns:1fr 1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .photos{position:static}
+  .rig img{aspect-ratio:4/3; object-position:30% 72%}
+  .rig.desk img{aspect-ratio:4/5; object-position:60% 50%}
+  .hero{grid-template-columns:minmax(0,1fr) 220px}
+}
+@media (max-width:760px){
+  .project{grid-template-columns:1fr}
+  .spec{border-left:0; border-top:1px solid var(--grid)}
+  .facts{grid-template-columns:1fr 1fr}
+  .skills{grid-template-columns:1fr}
+  .repos{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .ds{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .hero{grid-template-columns:1fr}
+  .hero-text{padding:28px 20px; order:2}
+  .portrait{order:1}
+  .portrait img{aspect-ratio:1/1; height:auto}
+  .project-main{padding:22px 18px}
+  .log{grid-template-columns:72px 22px minmax(0,1fr)}
+  .zone .depth{padding:16px 8px; font-size:11px}
+  .zone .entry{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-text">
+      <span class="label">Perth, Western Australia</span>
+      <h1>David Lindarte Burgos</h1>
+      <p class="lede">Petroleum engineer turned <em>energy data scientist</em>. From the wellbore to the price curve.</p>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/DavidLindarte">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/david-lindarte-burgos-765b4b100/?locale=en">LinkedIn</a>
+      </div>
+    </div>
+    <figure class="portrait"><img src="img/portrait.jpg" alt="David Lindarte Burgos at Halliburton's Real-time Decision Center" width="640" height="640"></figure>
+    <div class="facts">
+      <div class="fact"><b>~5 years</b><span>Upstream oil &amp; gas</span></div>
+      <div class="fact"><b>MSc Predictive Analytics</b><span>Major in Finance &amp; Investment · Curtin University</span></div>
+      <div class="fact"><b>Petroleum Engineer</b><span>Universidad de América</span></div>
+      <div class="fact"><b>ES · EN</b><span>Bilingual</span></div>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="sec-head"><h2>Projects</h2><span class="label">R · Python</span></div>
+
+    <article class="project">
+      <div class="project-main">
+        <div class="kicker"><span class="label">LNG markets</span><span class="label">R</span></div>
+        <h3>JKM LNG price forecasting</h3>
+        <p>Forecasting the Asian LNG benchmark to spot underpriced Australian cargoes.</p>
+        <ul>
+          <li>Johansen cointegration / VECM vs XGBoost</li>
+          <li>Drivers: Japanese weather, Australia–Japan freight</li>
+          <li>Freight history backfilled from US Gulf–Japan rates</li>
+        </ul>
+        <div class="pipeline" aria-label="Model pipeline">
+          <span>Unit-root tests</span><i>→</i><span>Johansen</span><i>→</i><span>VECM</span><i>vs</i><span>XGBoost</span>
+        </div>
+      </div>
+      <aside class="spec">
+        <dl>
+          <div><dt>Horizons</dt><dd>1, 5, 15 days</dd></div>
+          <div><dt>Test set</dt><dd>Last 15 days</dd></div>
+          <div><dt>Tests</dt><dd>ADF · PP · KPSS</dd></div>
+        </dl>
+      </aside>
+    </article>
+
+    <article class="project">
+      <div class="project-main">
+        <div class="kicker"><span class="label">Equities</span><span class="label">R</span></div>
+        <h3>Carhart four-factor optimal portfolio</h3>
+        <p>A long-only US$10M S&amp;P 500 portfolio built with factor models and quadratic optimisation.</p>
+        <ul>
+          <li>Sharpe and beta-stability screens: 500 → 10–20 stocks</li>
+          <li>Weights via <code>quadprog</code> with LASSO penalty</li>
+          <li>VaR and walk-forward backtest vs equal weight</li>
+        </ul>
+      </div>
+      <aside class="spec">
+        <dl>
+          <div><dt>Covariance</dt><dd class="formula">Ω̂ = B Σ̂<sub>F</sub> B′ + D̂</dd></div>
+          <div><dt>Factors</dt><dd>MKT · SMB · HML · MOM</dd></div>
+          <div><dt>Rebalance</dt><dd>Monthly</dd></div>
+        </dl>
+      </aside>
+    </article>
+
+    <article class="project">
+      <div class="project-main">
+        <div class="kicker"><span class="label">Personal project</span><span class="label">Python · Power BI</span></div>
+        <h3>Real-time stock price &amp; news monitor</h3>
+        <p>Tracks stock prices and news volume live, with spoken alerts when they move.</p>
+        <ul>
+          <li>Configurable start date, time range and volatility window</li>
+          <li>Voice alerts summarising price and news changes</li>
+          <li>Logs every update to CSV for Power BI dashboards</li>
+        </ul>
+        <div class="pipeline" aria-label="Monitor pipeline">
+          <span>Prices + news</span><i>→</i><span>Volatility</span><i>→</i><span>Voice alert</span><i>→</i><span>CSV</span><i>→</i><span>Power BI</span>
+        </div>
+      </div>
+      <aside class="spec">
+        <dl>
+          <div><dt>Refresh</dt><dd>Every 15 seconds</dd></div>
+          <div><dt>Output</dt><dd>Audio + CSV log</dd></div>
+          <div><dt>Stack</dt><dd>Python, Power BI</dd></div>
+        </dl>
+      </aside>
+    </article>
+  </section>
+
+  <section id="data-science">
+    <div class="sec-head"><h2>Data science</h2></div>
+    <div class="ds">
+      <article class="cap">
+        <h3>Data structures</h3>
+        <div class="chips"><span>Arrays</span><span>Linked lists</span><span>Stacks &amp; queues</span><span>Hash tables</span><span>Trees</span><span>Heaps</span><span>Graphs</span><span>Relational tables</span></div>
+        <p class="practice"><b>Applied in</b>JKM multi-source calendar</p>
+      </article>
+      <article class="cap">
+        <h3>Data governance</h3>
+        <div class="chips"><span>Data quality</span><span>Lineage</span><span>Metadata</span><span>Reproducibility</span></div>
+        <p class="practice"><b>Applied in</b>Documented freight backfill</p>
+      </article>
+      <article class="cap">
+        <h3>Data security</h3>
+        <div class="chips"><span>Access control</span><span>Least privilege</span><span>Encryption</span><span>Privacy Principles</span></div>
+        <p class="practice"><b>Applied in</b>Controlled-access field operations</p>
+      </article>
+      <article class="cap">
+        <h3>Visualisation</h3>
+        <div class="chips"><span>Power BI</span><span>Dashboards</span><span>Time series</span><span>Forecast vs actual</span><span>Well logs</span></div>
+        <p class="practice"><b>Applied in</b>Log analysis, model reports</p>
+      </article>
+      <article class="cap">
+        <h3>Data mining &amp; ML</h3>
+        <div class="chips"><span>Clustering</span><span>Association rules</span><span>Feature engineering</span><span>Lasso / Ridge</span><span>Random Forest</span><span>XGBoost</span><span>Neural networks</span><span>Image recognition</span></div>
+        <p class="practice"><b>Applied in</b>Stock screening, JKM</p>
+      </article>
+      <article class="cap">
+        <h3>Coding</h3>
+        <div class="chips"><span>Python</span><span>R</span><span>Jupyter</span><span>Git &amp; GitHub</span></div>
+        <p class="practice"><b>Applied in</b>All projects above</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><h2>Experience</h2><span class="label">Surface → TD → Data</span></div>
+    <div class="exp-grid">
+    <div class="photos">
+      <figure class="rig">
+        <img src="img/rig.jpg" alt="David in Halliburton coveralls beside a drilling rig at dusk, holding a downhole tool" width="1100" height="1391" loading="lazy">
+        <figcaption><b>Wellsite</b> · Halliburton, Colombia</figcaption>
+      </figure>
+    </div>
+    <div class="log" role="list">
+      <div class="log-head" aria-hidden="true"><div>Zone</div><div></div><div>Role</div></div>
+      <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
+        <div class="entry"><h3>Cathodic protection</h3><span class="org">ATP Ingeniería</span></div></div>
+      <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
+        <div class="entry"><h3>Pipeline integrity &amp; QA</h3><span class="org">Tubular Running and Rental Services</span></div></div>
+      <div class="zone" role="listitem"><div class="depth">Wellsite</div><div class="track"></div>
+        <div class="entry"><h3>Company man assistant</h3><span class="org">Ecopetrol / Consultec</span></div></div>
+      <div class="zone" role="listitem"><div class="depth">Downhole</div><div class="track"></div>
+        <div class="entry"><h3>LWD / MWD &amp; directional drilling</h3><span class="org">Halliburton</span></div></div>
+      <div class="zone" role="listitem"><div class="depth">Formation</div><div class="track"></div>
+        <div class="entry"><h3>Log analyst</h3><span class="org">Halliburton</span></div></div>
+      <div class="zone z-data" role="listitem"><div class="depth">Data</div><div class="track"></div>
+        <div class="entry"><h3>MSc Predictive Analytics, major in Finance &amp; Investment</h3><span class="org">Curtin University · 2026</span></div></div>
+    </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>David Lindarte Burgos · Petroleum Engineer · Predictive Analytics</span>
+    <a href="https://github.com/DavidLindarte">github.com/DavidLindarte</a>
+  </footer>
+</div>
+
+</body>
+</html>
