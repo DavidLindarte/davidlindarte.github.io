@@ -115,6 +115,12 @@ section{display:flex; flex-direction:column; gap:24px}
 .pipeline{display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-family:var(--mono); font-size:12.5px}
 .pipeline span{border:1px solid var(--grid); padding:4px 8px; background:var(--paper)}
 .pipeline i{font-style:normal; color:var(--muted)}
+.proj-links{display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:2px}
+.proj-links a{font-family:var(--mono); font-size:13px; font-weight:500; color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+.proj-links a:hover{border-bottom-color:var(--accent)}
+.result{margin:0; padding:10px 12px; border-left:3px solid var(--curve); background:var(--tint); font-size:14.5px}
+.live-tag{display:inline-flex; align-items:center; gap:6px}
+.live-tag::before{content:""; width:7px; height:7px; border-radius:50%; background:#0ca30c}
 
 .repos{display:grid; grid-template-columns:1fr; gap:16px}
 .repo{
@@ -234,43 +240,75 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
 
     <article class="project">
       <div class="project-main">
-        <div class="kicker"><span class="label">LNG markets</span><span class="label">R</span></div>
+        <div class="kicker"><span class="label">LNG markets</span><span class="label">R</span><span class="label">Research project</span></div>
         <h3>JKM LNG price forecasting</h3>
-        <p>Forecasting the Asian LNG benchmark to spot underpriced Australian cargoes.</p>
+        <p>Is a spot cargo from Australia fairly priced? A benchmark for the Asian LNG price (JKM) from crude oil, gas hubs and LNG freight.</p>
         <ul>
-          <li>Johansen cointegration / VECM vs XGBoost</li>
-          <li>Drivers: Japanese weather, Australia–Japan freight</li>
-          <li>Freight history backfilled from US Gulf–Japan rates</li>
+          <li>Johansen cointegration: one long-run equilibrium between JKM, Australia–Japan freight and the Brent–Dubai spread</li>
+          <li>VECM vs ARIMA vs XGBoost vs random walk, out of sample at 1, 5 and 15 trading days</li>
+          <li>Freight history backfilled from US Gulf–Japan rates with a pre-conflict beta</li>
         </ul>
+        <p class="result"><b>VECM was the only model to beat the random walk:</b> MAPE 1.98% / 4.02% / 13.45% vs 2.32% / 5.49% / 18.41%, with the direction right on 80–93% of days.</p>
         <div class="pipeline" aria-label="Model pipeline">
-          <span>Unit-root tests</span><i>→</i><span>Johansen</span><i>→</i><span>VECM</span><i>vs</i><span>XGBoost</span>
+          <span>Unit-root tests</span><i>→</i><span>Johansen</span><i>→</i><span>VECM</span><i>vs</i><span>ARIMA · XGBoost</span>
         </div>
+        <div class="proj-links"><a href="https://davidlindarte.github.io/jkm-lng-forecasting/">Results →</a><a href="https://github.com/DavidLindarte/jkm-lng-forecasting">Code →</a></div>
       </div>
       <aside class="spec">
         <dl>
           <div><dt>Horizons</dt><dd>1, 5, 15 days</dd></div>
-          <div><dt>Test set</dt><dd>Last 15 days</dd></div>
-          <div><dt>Tests</dt><dd>ADF · PP · KPSS</dd></div>
+          <div><dt>Test set</dt><dd>Last 15 days, incl. the Jul-2026 shock</dd></div>
+          <div><dt>Tests</dt><dd>ADF · PP · KPSS · Johansen</dd></div>
+          <div><dt>Data</dt><dd>LSEG Workspace, daily</dd></div>
         </dl>
       </aside>
     </article>
 
     <article class="project">
       <div class="project-main">
-        <div class="kicker"><span class="label">Equities</span><span class="label">R</span></div>
-        <h3>Carhart four-factor optimal portfolio</h3>
-        <p>A long-only US$10M S&amp;P 500 portfolio built with factor models and quadratic optimisation.</p>
+        <div class="kicker"><span class="label">Macro forecasting</span><span class="label">R</span><span class="label live-tag">Updates quarterly</span></div>
+        <h3>WA State Final Demand forecast</h3>
+        <p>A four-quarter forecast of Western Australia's final demand (household, private and public), for a government-agency brief.</p>
         <ul>
-          <li>Sharpe and beta-stability screens: 500 → 10–20 stocks</li>
-          <li>Weights via <code>quadprog</code> with LASSO penalty</li>
-          <li>VaR and walk-forward backtest vs equal weight</li>
+          <li>ARIMA on every component and VECM on cointegrated blocks, reconciled with MinT so the parts add up</li>
+          <li>Hold-out test against the published ABS series and an average-growth benchmark</li>
+          <li>GitHub Actions downloads each ABS release, re-estimates every model and republishes</li>
         </ul>
+        <p class="result"><b>Latest forecast:</b> WA SFD growing about 0.7–1.0% a quarter, +3.6% year on year by June 2027.</p>
+        <div class="pipeline" aria-label="Forecast pipeline">
+          <span>ABS 5206.0</span><i>→</i><span>ARIMA · VECM</span><i>→</i><span>MinT</span><i>→</i><span>Dashboard</span>
+        </div>
+        <div class="proj-links"><a href="https://davidlindarte.github.io/wa-state-final-demand-forecast/">Live forecast →</a><a href="https://github.com/DavidLindarte/wa-state-final-demand-forecast">Code →</a></div>
+      </div>
+      <aside class="spec">
+        <dl>
+          <div><dt>Horizon</dt><dd>4 quarters</dd></div>
+          <div><dt>Data</dt><dd>ABS National Accounts, 1985–today</dd></div>
+          <div><dt>Models</dt><dd>ARIMA · VECM · MinT</dd></div>
+          <div><dt>Team</dt><dd>Group project; sector model is mine</dd></div>
+        </dl>
+      </aside>
+    </article>
+
+    <article class="project">
+      <div class="project-main">
+        <div class="kicker"><span class="label">Equities</span><span class="label">Python</span><span class="label live-tag">Re-run monthly</span></div>
+        <h3>S&amp;P 500 factor portfolio</h3>
+        <p>A long-only US$10M S&amp;P 500 portfolio built with statistical screening, a Carhart four-factor model and quadratic optimisation.</p>
+        <ul>
+          <li>Sharpe-significance and beta-stability screens: 500 stocks → about 20–25</li>
+          <li>Carhart expected returns, QP weights (cvxpy) with sector caps and an L1 penalty</li>
+          <li>Quarterly walk-forward vs SPY, historical VaR with a Kupiec backtest</li>
+        </ul>
+        <p class="result"><b>Out of sample since Sep 2025:</b> +17.7% vs SPY +19.0%. The VaR is well calibrated (5.6% breaches vs 5% expected, p = 0.69).</p>
+        <div class="proj-links"><a href="https://davidlindarte.github.io/sp500-carhart-portfolio/">Dashboard →</a><a href="https://davidlindarte.github.io/sp500-carhart-portfolio/report.html">Notebook →</a><a href="https://github.com/DavidLindarte/sp500-carhart-portfolio">Code →</a></div>
       </div>
       <aside class="spec">
         <dl>
           <div><dt>Covariance</dt><dd class="formula">Ω̂ = B Σ̂<sub>F</sub> B′ + D̂</dd></div>
           <div><dt>Factors</dt><dd>MKT · SMB · HML · MOM</dd></div>
-          <div><dt>Rebalance</dt><dd>Monthly</dd></div>
+          <div><dt>Rebalance</dt><dd>Quarterly (63 days)</dd></div>
+          <div><dt>Team</dt><dd>Group project</dd></div>
         </dl>
       </aside>
     </article>
