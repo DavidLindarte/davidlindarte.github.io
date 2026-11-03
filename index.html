@@ -134,11 +134,11 @@ section{display:flex; flex-direction:column; gap:24px}
 .lang::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--curve)}
 
 /* Experience as a well log, beside the rig photo */
-.exp-grid{display:grid; grid-template-columns:320px minmax(0,1fr); gap:20px; align-items:start}
+.exp-grid{display:grid; grid-template-columns:190px minmax(0,1fr); gap:20px; align-items:start}
 .photos{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 16px); display:flex; flex-direction:column; gap:16px}
 .rig{margin:0; background:var(--night); display:flex; flex-direction:column}
 .rig.desk img{aspect-ratio:1/1}
-.rig img{display:block; width:100%; max-width:100%; aspect-ratio:1100/1391; object-fit:cover}
+.rig img{display:block; width:100%; max-width:100%; height:auto; aspect-ratio:1100/1391; object-fit:cover}
 .rig figcaption{padding:12px 14px; font-family:var(--mono); font-size:12px; color:#aab4d0; line-height:1.45}
 .rig figcaption b{color:#f2c14e; font-weight:500}
 .log{display:grid; grid-template-columns:110px 34px minmax(0,1fr); background:var(--sheet); border:1px solid var(--grid)}
@@ -160,6 +160,8 @@ section{display:flex; flex-direction:column; gap:24px}
 .entry h3{font-size:18px; font-weight:700; font-stretch:105%}
 .entry .org{font-family:var(--mono); font-size:13px; color:var(--accent)}
 .entry p{color:var(--muted); max-width:62ch}
+.entry ul{margin:4px 0 0; padding-left:18px; color:var(--muted); font-size:15px; max-width:66ch; display:flex; flex-direction:column; gap:3px}
+.entry li::marker{color:var(--curve)}
 .z-data .track{--fill:var(--accent)}
 
 /* Data science competencies */
@@ -185,7 +187,7 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
 @media (max-width:860px){
   .ds{grid-template-columns:1fr 1fr}
   .exp-grid{grid-template-columns:1fr}
-  .photos{position:static}
+  .photos{position:static; max-width:260px}
   .rig img{aspect-ratio:4/3; object-position:30% 72%}
   .rig.desk img{aspect-ratio:4/5; object-position:60% 50%}
   .hero{grid-template-columns:minmax(0,1fr) 220px}
@@ -289,15 +291,28 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
     <div class="log" role="list">
       <div class="log-head" aria-hidden="true"><div>Zone</div><div></div><div>Role</div></div>
       <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
-        <div class="entry"><h3>Cathodic protection</h3><span class="org">ATP Ingeniería</span></div></div>
+        <div class="entry"><h3>Cathodic protection</h3><span class="org">ATP Ingeniería</span>
+          <ul><li>Ensured compliance with customer HSE requirements on site.</li>
+          <li>Prepared daily reports and tracked project expenses.</li>
+          <li>Clients: GeoPark, PetroSud and Parex.</li></ul></div></div>
       <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
-        <div class="entry"><h3>Pipeline integrity &amp; QA</h3><span class="org">Tubular Running and Rental Services</span></div></div>
+        <div class="entry"><h3>Quality Coordinator</h3><span class="org">Tubular Running and Rental Services</span>
+          <ul><li>Traceability of raw materials, fabrication procedures and passed non-destructive tests.</li>
+          <li>Phosphating and tension tests for TRRS China casing drive systems.</li></ul></div></div>
       <div class="zone" role="listitem"><div class="depth">Wellsite</div><div class="track"></div>
-        <div class="entry"><h3>Company man assistant</h3><span class="org">Ecopetrol / Consultec</span></div></div>
+        <div class="entry"><h3>Company man assistant · Drilling logistics</h3><span class="org">Ecopetrol / Consultec · Rubiales Field</span>
+          <ul><li>Coordinated simultaneous rig-site operations and logistics across service contractors; supervised rig-floor activities.</li>
+          <li>Verified third-party services and invoices against the drilling program and reviewed contractor agreements.</li>
+          <li>Prepared daily reports and the technical and regulatory documentation required by government authorities.</li></ul></div></div>
       <div class="zone" role="listitem"><div class="depth">Downhole</div><div class="track"></div>
-        <div class="entry"><h3>LWD / MWD &amp; directional drilling</h3><span class="org">Halliburton</span></div></div>
+        <div class="entry"><h3>LWD / MWD &amp; directional drilling</h3><span class="org">Halliburton</span>
+          <ul><li>Drilled oil and gas wells across Colombia with a range of well geometries.</li>
+          <li>Strong understanding and hands-on experience of drilling, exploration and geological logs.</li></ul></div></div>
       <div class="zone" role="listitem"><div class="depth">Formation</div><div class="track"></div>
-        <div class="entry"><h3>Log analyst</h3><span class="org">Halliburton</span></div></div>
+        <div class="entry"><h3>Log analyst · Office engineer</h3><span class="org">Halliburton</span>
+          <ul><li>Resolved customer enquiries.</li>
+          <li>Created data acquisition plans for each well.</li>
+          <li>Selected the best tools and pulse frequency to meet customer standards.</li></ul></div></div>
       <div class="zone z-data" role="listitem"><div class="depth">Data</div><div class="track"></div>
         <div class="entry"><h3>MSc Predictive Analytics, major in Finance &amp; Investment</h3><span class="org">Curtin University · 2026</span></div></div>
     </div>
