@@ -228,6 +228,21 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
 .dash:hover::before{background:var(--sheet)}
 .proj p{color:var(--muted); max-width:72ch}
 .proj .kicker{display:flex; flex-wrap:wrap; gap:6px 14px}
+.mail{font-family:var(--mono); font-size:14px; color:#d5dbec; text-decoration:none; border-bottom:1px solid #4a5578; align-self:flex-start; overflow-wrap:anywhere}
+.mail:hover{color:#f2c14e; border-bottom-color:#f2c14e}
+.entry .when{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.02em}
+.ds-stats{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; background:var(--grid); border:1px solid var(--grid); border-top:3px solid var(--dash)}
+.ds-stat{background:var(--sheet); padding:16px 18px; display:flex; flex-direction:column; gap:4px}
+.ds-stat b{font-family:var(--dash-font); font-size:28px; font-weight:700; color:var(--dash); line-height:1.1}
+.ds-stat span{font-size:14px; color:var(--muted)}
+.cap .evidence{margin-top:auto; padding-top:12px; border-top:1px dashed var(--grid); font-size:14px; color:var(--ink); display:flex; flex-direction:column; gap:6px}
+.cap .evidence b{font-family:var(--mono); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent)}
+.cap .evidence a{font-family:var(--dash-font); font-weight:700; font-size:13.5px; color:var(--dash); text-decoration:none}
+.cap .evidence a:hover{text-decoration:underline}
+.toolbelt{background:var(--sheet); border:1px solid var(--grid); padding:18px 20px; display:grid; grid-template-columns:120px minmax(0,1fr); gap:10px 16px; align-items:baseline}
+.toolbelt dt{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.toolbelt dd{margin:0}
+@media (max-width:600px){.ds-stats{grid-template-columns:1fr}.toolbelt{grid-template-columns:1fr; gap:4px}.toolbelt dd{margin-bottom:10px}}
 </style>
 </head>
 <body>
@@ -236,13 +251,14 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
 
   <header class="hero">
     <div class="hero-text">
-      <span class="label">Perth, Western Australia</span>
+      <span class="label">Petroleum engineering · Data science · Finance</span>
       <h1>David Lindarte Burgos</h1>
-      <p class="lede">Petroleum engineer turned <em>energy data scientist</em>. From the wellbore to the price curve.</p>
+      <p class="lede">Petroleum engineer turned <em>energy data scientist</em>, with hands-on experience from the wellbore to finance analytics.</p>
       <div class="links">
         <a class="btn primary" href="https://github.com/DavidLindarte">GitHub</a>
         <a class="btn" href="https://www.linkedin.com/in/david-lindarte-burgos-765b4b100/?locale=en">LinkedIn</a>
       </div>
+      <a class="mail" href="mailto:davidlindarteburgos@gmail.com">✉ davidlindarteburgos@gmail.com</a>
     </div>
     <figure class="portrait"><img src="portrait.jpg" alt="David Lindarte Burgos at Halliburton's Real-time Decision Center" width="640" height="640"></figure>
     <div class="facts">
@@ -291,74 +307,93 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
     <div class="log" role="list">
       <div class="log-head" aria-hidden="true"><div>Zone</div><div></div><div>Role</div></div>
       <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
-        <div class="entry"><h3>Cathodic protection</h3><span class="org">ATP Ingeniería</span>
+        <div class="entry"><h3>Cathodic protection</h3><span class="org">ATP Ingeniería</span><span class="when">Oct 2019 – Nov 2021</span>
           <ul><li>Ensured compliance with customer HSE requirements on site.</li>
           <li>Prepared daily reports and tracked project expenses.</li>
           <li>Clients: GeoPark, PetroSud and Parex.</li></ul></div></div>
       <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
-        <div class="entry"><h3>Quality Coordinator</h3><span class="org">Tubular Running and Rental Services</span>
+        <div class="entry"><h3>Quality Coordinator</h3><span class="org">Tubular Running and Rental Services</span><span class="when">Jul 2021 – Nov 2021</span>
           <ul><li>Traceability of raw materials, fabrication procedures and passed non-destructive tests.</li>
           <li>Phosphating and tension tests for TRRS China casing drive systems.</li></ul></div></div>
       <div class="zone" role="listitem"><div class="depth">Wellsite</div><div class="track"></div>
-        <div class="entry"><h3>Company man assistant · Drilling logistics</h3><span class="org">Ecopetrol / Consultec · Rubiales Field</span>
+        <div class="entry"><h3>Company man assistant · Drilling logistics</h3><span class="org">Ecopetrol / Consultec · Rubiales Field</span><span class="when">Nov 2021 – Feb 2022</span>
           <ul><li>Coordinated simultaneous rig-site operations and logistics across service contractors; supervised rig-floor activities.</li>
           <li>Verified third-party services and invoices against the drilling program and reviewed contractor agreements.</li>
           <li>Prepared daily reports and the technical and regulatory documentation required by government authorities.</li></ul></div></div>
       <div class="zone" role="listitem"><div class="depth">Downhole</div><div class="track"></div>
-        <div class="entry"><h3>LWD / MWD &amp; directional drilling</h3><span class="org">Halliburton</span>
+        <div class="entry"><h3>LWD / MWD &amp; directional drilling</h3><span class="org">Halliburton</span><span class="when">Feb 2022 – Feb 2025</span>
           <ul><li>Drilled oil and gas wells across Colombia with a range of well geometries.</li>
           <li>Strong understanding and hands-on experience of drilling, exploration and geological logs.</li></ul></div></div>
       <div class="zone" role="listitem"><div class="depth">Formation</div><div class="track"></div>
-        <div class="entry"><h3>Log analyst · Office engineer</h3><span class="org">Halliburton</span>
+        <div class="entry"><h3>Log analyst · Office engineer</h3><span class="org">Halliburton</span><span class="when">Feb 2022 – Feb 2025</span>
           <ul><li>Resolved customer enquiries.</li>
           <li>Created data acquisition plans for each well.</li>
           <li>Selected the best tools and pulse frequency to meet customer standards.</li></ul></div></div>
       <div class="zone z-data" role="listitem"><div class="depth">Data</div><div class="track"></div>
-        <div class="entry"><h3>MSc Predictive Analytics, major in Finance &amp; Investment</h3><span class="org">Curtin University · 2026</span></div></div>
+        <div class="entry"><h3>MSc Predictive Analytics, major in Finance &amp; Investment</h3><span class="org">Curtin University</span><span class="when">2025 – 2026</span></div></div>
+      <div class="zone z-data" role="listitem"><div class="depth">Data</div><div class="track"></div>
+        <div class="entry"><h3>Finance &amp; Data Analytics Intern</h3><span class="org">ATP Ingeniería</span><span class="when">Nov 2025 – Jan 2026</span>
+          <ul><li>Built a Python tool that validates data quality across 100+ engineering budget and cost-control spreadsheets in under 3 minutes, replacing a manual review.</li>
+          <li>Automated ERP data reconciliation.</li></ul></div></div>
     </div>
     </div>
   </section>
 
   <section id="data-science">
-    <div class="sec-head"><h2>Data science</h2></div>
+    <div class="sec-head"><h2>Data science in practice</h2><span class="label">Methods → evidence</span></div>
+    <div class="ds-stats">
+      <div class="ds-stat"><b>4</b><span>live dashboards, each backed by public code</span></div>
+      <div class="ds-stat"><b>3</b><span>automated pipelines that refresh data and re-run models on a schedule</span></div>
+      <div class="ds-stat"><b>100+</b><span>spreadsheets validated in under 3 minutes by a tool built at ATP</span></div>
+    </div>
     <div class="ds">
       <article class="cap">
-        <h3>Data structures</h3>
-        <div class="chips"><span>Arrays</span><span>Linked lists</span><span>Stacks &amp; queues</span><span>Hash tables</span><span>Trees</span><span>Heaps</span><span>Graphs</span><span>Relational tables</span></div>
-        <p class="practice"><b>Applied in</b>JKM multi-source calendar</p>
+        <h3>Forecasting &amp; econometrics</h3>
+        <p>Time-series models tested out of sample against a naïve benchmark.</p>
+        <div class="chips"><span>ARIMA</span><span>VAR / VECM</span><span>Johansen cointegration</span><span>Unit-root tests</span><span>Walk-forward validation</span><span>MAPE</span></div>
+        <div class="evidence"><b>Evidence</b><span>JKM: the VECM beats a random walk at all three horizons.</span><a href="https://davidlindarte.github.io/jkm-lng-forecasting/">JKM dashboard ↗</a><a href="https://davidlindarte.github.io/wa-state-final-demand-forecast/">WA demand forecast ↗</a></div>
       </article>
       <article class="cap">
-        <h3>Data governance</h3>
-        <div class="chips"><span>Data quality</span><span>Lineage</span><span>Metadata</span><span>Reproducibility</span></div>
-        <p class="practice"><b>Applied in</b>Documented freight backfill</p>
+        <h3>Machine learning</h3>
+        <p>Supervised models used as benchmarks and for regularised estimation.</p>
+        <div class="chips"><span>XGBoost</span><span>Random Forest</span><span>Lasso / Ridge</span><span>Feature engineering</span><span>Clustering</span><span>Neural networks</span></div>
+        <div class="evidence"><b>Evidence</b><span>XGBoost benchmark for JKM; ridge fallback in the factor model.</span><a href="https://davidlindarte.github.io/jkm-lng-forecasting/">JKM dashboard ↗</a></div>
       </article>
       <article class="cap">
-        <h3>Data security</h3>
-        <div class="chips"><span>Access control</span><span>Least privilege</span><span>Encryption</span><span>Privacy Principles</span></div>
-        <p class="practice"><b>Applied in</b>Controlled-access field operations</p>
+        <h3>Quantitative finance</h3>
+        <p>Factor models, optimisation and risk, validated quarter by quarter.</p>
+        <div class="chips"><span>Carhart 4-factor</span><span>CAPM / FF3</span><span>QP optimisation</span><span>VaR + Kupiec test</span><span>Diebold–Mariano</span></div>
+        <div class="evidence"><b>Evidence</b><span>US$10M S&amp;P 500 portfolio tested against SPY.</span><a href="https://davidlindarte.github.io/sp500-carhart-portfolio/">S&amp;P dashboard ↗</a></div>
       </article>
       <article class="cap">
-        <h3>Visualisation</h3>
-        <div class="chips"><span>Power BI</span><span>Dashboards</span><span>Time series</span><span>Forecast vs actual</span><span>Well logs</span></div>
-        <p class="practice"><b>Applied in</b>Log analysis, model reports</p>
+        <h3>Data engineering &amp; automation</h3>
+        <p>Scheduled jobs that pull data from public APIs, re-run the model and publish the result.</p>
+        <div class="chips"><span>GitHub Actions</span><span>Scheduled pipelines</span><span>ABS API</span><span>Yahoo Finance</span><span>Google News RSS</span><span>papermill</span></div>
+        <div class="evidence"><b>Evidence</b><span>Quarterly, monthly and 3-hourly refreshes.</span><a href="https://davidlindarte.github.io/Equity-Commodities-Data-Analysis/">Energy monitor ↗</a><a href="https://davidlindarte.github.io/wa-state-final-demand-forecast/">WA demand forecast ↗</a></div>
       </article>
       <article class="cap">
-        <h3>Data mining &amp; ML</h3>
-        <div class="chips"><span>Clustering</span><span>Association rules</span><span>Feature engineering</span><span>Lasso / Ridge</span><span>Random Forest</span><span>XGBoost</span><span>Neural networks</span><span>Image recognition</span></div>
-        <p class="practice"><b>Applied in</b>Stock screening, JKM</p>
+        <h3>Data quality &amp; governance</h3>
+        <p>Validation, reconciliation and documented, reproducible data sources.</p>
+        <div class="chips"><span>Validation rules</span><span>Reconciliation</span><span>Lineage</span><span>Reproducibility</span><span>Documentation</span></div>
+        <div class="evidence"><b>Evidence</b><span>ATP spreadsheet validator and ERP reconciliation; documented freight backfill for JKM.</span></div>
       </article>
       <article class="cap">
-        <h3>Coding</h3>
-        <div class="chips"><span>Python</span><span>R</span><span>Jupyter</span><span>Git &amp; GitHub</span></div>
-        <p class="practice"><b>Applied in</b>All projects above</p>
+        <h3>Visualisation &amp; reporting</h3>
+        <p>Turning models and field data into decisions for clients and teams.</p>
+        <div class="chips"><span>Power BI</span><span>Web dashboards</span><span>ggplot2</span><span>matplotlib</span><span>Forecast vs actual</span><span>Well logs</span></div>
+        <div class="evidence"><b>Evidence</b><span>Four live dashboards; well-log interpretation for Halliburton clients.</span></div>
       </article>
     </div>
+    <dl class="toolbelt">
+      <dt>Python</dt><dd class="chips"><span>pandas</span><span>NumPy</span><span>SciPy</span><span>statsmodels</span><span>scikit-learn</span><span>cvxpy</span><span>yfinance</span></dd>
+      <dt>R</dt><dd class="chips"><span>tidyverse</span><span>forecast</span><span>vars</span><span>urca</span><span>tseries</span><span>xgboost</span></dd>
+      <dt>Tools</dt><dd class="chips"><span>Git &amp; GitHub Actions</span><span>Jupyter</span><span>Power BI</span><span>Excel</span></dd>
+    </dl>
   </section>
-
 
   <footer>
     <span>David Lindarte Burgos · Petroleum Engineer · Predictive Analytics</span>
-    <a href="https://github.com/DavidLindarte">github.com/DavidLindarte</a>
+    <span><a href="mailto:davidlindarteburgos@gmail.com">davidlindarteburgos@gmail.com</a> · <a href="https://github.com/DavidLindarte">github.com/DavidLindarte</a></span>
   </footer>
 </div>
 
