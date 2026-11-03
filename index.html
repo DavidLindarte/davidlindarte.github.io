@@ -12,7 +12,7 @@ img{max-width:100%}
 </style>
 <title>David Lindarte Burgos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap">
 <style>
 /* Layout: a log sheet. Single reading column, experience drawn as a well-log depth track from surface to data. */
 :root{
@@ -210,6 +210,22 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
   .zone .depth{padding:16px 8px; font-size:11px}
   .zone .entry{padding:16px}
 }
+
+/* Compact project list with dashboard links */
+:root{--dash:#0b7a65; --dash-bg:#e3f4ef; --dash-font:"Space Grotesk", var(--display)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--dash:#3fd2b0; --dash-bg:#0e2f2b}}
+:root[data-theme="dark"]{--dash:#3fd2b0; --dash-bg:#0e2f2b}
+.proj-list{display:flex; flex-direction:column; gap:14px}
+.proj{background:var(--sheet); border:1px solid var(--grid); border-left:4px solid var(--curve); padding:20px 24px; display:flex; flex-direction:column; gap:8px}
+.proj-head{display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px}
+.proj-head h3{font-size:22px; font-weight:750; font-stretch:108%}
+.dash{font-family:var(--dash-font); font-weight:700; font-size:14px; letter-spacing:.01em; color:var(--dash); background:var(--dash-bg);
+  border:1.5px solid var(--dash); border-radius:999px; padding:4px 14px; text-decoration:none; white-space:nowrap; display:inline-flex; align-items:center; gap:6px}
+.dash::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--dash)}
+.dash:hover{background:var(--dash); color:var(--sheet)}
+.dash:hover::before{background:var(--sheet)}
+.proj p{color:var(--muted); max-width:72ch}
+.proj .kicker{display:flex; flex-wrap:wrap; gap:6px 14px}
 </style>
 </head>
 <body>
@@ -237,104 +253,55 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
 
   <section id="projects">
     <div class="sec-head"><h2>Projects</h2><span class="label">R · Python</span></div>
-
-    <article class="project">
-      <div class="project-main">
-        <div class="kicker"><span class="label">LNG markets</span><span class="label">R</span><span class="label">Research project</span></div>
-        <h3>JKM LNG price forecasting</h3>
-        <p>Is a spot cargo from Australia fairly priced? A benchmark for the Asian LNG price (JKM) from crude oil, gas hubs and LNG freight.</p>
-        <ul>
-          <li>Johansen cointegration: one long-run equilibrium between JKM, Australia–Japan freight and the Brent–Dubai spread</li>
-          <li>VECM vs ARIMA vs XGBoost vs random walk, out of sample at 1, 5 and 15 trading days</li>
-          <li>Freight history backfilled from US Gulf–Japan rates with a pre-conflict beta</li>
-        </ul>
-        <p class="result"><b>VECM was the only model to beat the random walk:</b> MAPE 1.98% / 4.02% / 13.45% vs 2.32% / 5.49% / 18.41%, with the direction right on 80–93% of days.</p>
-        <div class="pipeline" aria-label="Model pipeline">
-          <span>Unit-root tests</span><i>→</i><span>Johansen</span><i>→</i><span>VECM</span><i>vs</i><span>ARIMA · XGBoost</span>
-        </div>
-        <div class="proj-links"><a href="https://davidlindarte.github.io/jkm-lng-forecasting/">Results →</a><a href="https://github.com/DavidLindarte/jkm-lng-forecasting">Code →</a></div>
-      </div>
-      <aside class="spec">
-        <dl>
-          <div><dt>Horizons</dt><dd>1, 5, 15 days</dd></div>
-          <div><dt>Test set</dt><dd>Last 15 days, incl. the Jul-2026 shock</dd></div>
-          <div><dt>Tests</dt><dd>ADF · PP · KPSS · Johansen</dd></div>
-          <div><dt>Data</dt><dd>LSEG Workspace, daily</dd></div>
-        </dl>
-      </aside>
+    <div class="proj-list">
+    <article class="proj">
+      <div class="proj-head"><h3>JKM LNG price forecasting</h3><a class="dash" href="https://davidlindarte.github.io/jkm-lng-forecasting/">Dashboard ↗</a></div>
+      <div class="kicker"><span class="label">LNG markets</span><span class="label">R</span><span class="label">Research project</span></div>
+      <p>Is a spot LNG cargo from Australia fairly priced? A Johansen VECM against ARIMA, XGBoost and a random walk forecasts the Asian benchmark (JKM) from oil, gas hubs and freight.</p>
     </article>
-
-    <article class="project">
-      <div class="project-main">
-        <div class="kicker"><span class="label">Macro forecasting</span><span class="label">R</span><span class="label live-tag">Updates quarterly</span></div>
-        <h3>WA State Final Demand forecast</h3>
-        <p>A four-quarter forecast of Western Australia's final demand (household, private and public), for a government-agency brief.</p>
-        <ul>
-          <li>ARIMA on every component and VECM on cointegrated blocks, reconciled with MinT so the parts add up</li>
-          <li>Hold-out test against the published ABS series and an average-growth benchmark</li>
-          <li>GitHub Actions downloads each ABS release, re-estimates every model and republishes</li>
-        </ul>
-        <p class="result"><b>Latest forecast:</b> WA SFD growing about 0.7–1.0% a quarter, +3.6% year on year by June 2027.</p>
-        <div class="pipeline" aria-label="Forecast pipeline">
-          <span>ABS 5206.0</span><i>→</i><span>ARIMA · VECM</span><i>→</i><span>MinT</span><i>→</i><span>Dashboard</span>
-        </div>
-        <div class="proj-links"><a href="https://davidlindarte.github.io/wa-state-final-demand-forecast/">Live forecast →</a><a href="https://github.com/DavidLindarte/wa-state-final-demand-forecast">Code →</a></div>
-      </div>
-      <aside class="spec">
-        <dl>
-          <div><dt>Horizon</dt><dd>4 quarters</dd></div>
-          <div><dt>Data</dt><dd>ABS National Accounts, 1985–today</dd></div>
-          <div><dt>Models</dt><dd>ARIMA · VECM · MinT</dd></div>
-          <div><dt>Team</dt><dd>Group project; sector model is mine</dd></div>
-        </dl>
-      </aside>
+    <article class="proj">
+      <div class="proj-head"><h3>WA State Final Demand forecast</h3><a class="dash" href="https://davidlindarte.github.io/wa-state-final-demand-forecast/">Live forecast ↗</a></div>
+      <div class="kicker"><span class="label">Macro forecasting</span><span class="label">R</span><span class="label">Updates quarterly</span></div>
+      <p>A four-quarter forecast of Western Australia's economy (household, private and public demand) from ARIMA and VECM models. It is re-estimated automatically after every ABS release.</p>
     </article>
-
-    <article class="project">
-      <div class="project-main">
-        <div class="kicker"><span class="label">Equities</span><span class="label">Python</span><span class="label live-tag">Re-run monthly</span></div>
-        <h3>S&amp;P 500 factor portfolio</h3>
-        <p>A long-only US$10M S&amp;P 500 portfolio built with statistical screening, a Carhart four-factor model and quadratic optimisation.</p>
-        <ul>
-          <li>Sharpe-significance and beta-stability screens: 500 stocks → about 20–25</li>
-          <li>Carhart expected returns, QP weights (cvxpy) with sector caps and an L1 penalty</li>
-          <li>Quarterly walk-forward vs SPY, historical VaR with a Kupiec backtest</li>
-        </ul>
-        <p class="result"><b>Out of sample, 4 rebalanced quarters (Sep 2025 – Sep 2026):</b> +18.6% vs SPY +20.0%. The VaR is well calibrated (5.6% breaches vs 5% expected, p = 0.69). Live figures on the dashboard.</p>
-        <div class="proj-links"><a href="https://davidlindarte.github.io/sp500-carhart-portfolio/">Dashboard →</a><a href="https://davidlindarte.github.io/sp500-carhart-portfolio/report.html">Notebook →</a><a href="https://github.com/DavidLindarte/sp500-carhart-portfolio">Code →</a></div>
-      </div>
-      <aside class="spec">
-        <dl>
-          <div><dt>Covariance</dt><dd class="formula">Ω̂ = B Σ̂<sub>F</sub> B′ + D̂</dd></div>
-          <div><dt>Factors</dt><dd>MKT · SMB · HML · MOM</dd></div>
-          <div><dt>Rebalance</dt><dd>Quarterly (63 days)</dd></div>
-          <div><dt>Team</dt><dd>Group project</dd></div>
-        </dl>
-      </aside>
+    <article class="proj">
+      <div class="proj-head"><h3>S&amp;P 500 factor portfolio</h3><a class="dash" href="https://davidlindarte.github.io/sp500-carhart-portfolio/">Live dashboard ↗</a></div>
+      <div class="kicker"><span class="label">Equities</span><span class="label">Python</span><span class="label">Group project</span></div>
+      <p>A US$10M S&amp;P 500 portfolio built with statistical screening, a Carhart four-factor model and quadratic optimisation. It is tested quarter by quarter against SPY.</p>
     </article>
-
-    <article class="project">
-      <div class="project-main">
-        <div class="kicker"><span class="label">Personal project</span><span class="label">Python · Power BI</span></div>
-        <h3>Real-time stock price &amp; news monitor</h3>
-        <p>Tracks stock prices and news volume live, with spoken alerts when they move.</p>
-        <ul>
-          <li>Configurable start date, time range and volatility window</li>
-          <li>Voice alerts summarising price and news changes</li>
-          <li>Logs every update to CSV for Power BI dashboards</li>
-        </ul>
-        <div class="pipeline" aria-label="Monitor pipeline">
-          <span>Prices + news</span><i>→</i><span>Volatility</span><i>→</i><span>Voice alert</span><i>→</i><span>CSV</span><i>→</i><span>Power BI</span>
-        </div>
-      </div>
-      <aside class="spec">
-        <dl>
-          <div><dt>Refresh</dt><dd>Every 15 seconds</dd></div>
-          <div><dt>Output</dt><dd>Audio + CSV log</dd></div>
-          <div><dt>Stack</dt><dd>Python, Power BI</dd></div>
-        </dl>
-      </aside>
+    <article class="proj">
+      <div class="proj-head"><h3>Energy stock &amp; news monitor</h3><a class="dash" href="https://davidlindarte.github.io/Equity-Commodities-Data-Analysis/">Live monitor ↗</a></div>
+      <div class="kicker"><span class="label">Personal project</span><span class="label">Python</span><span class="label">Updates every 3 h</span></div>
+      <p>Tracks Woodside and Shell share prices alongside Google News volume on the topics that move them (LNG output, accidents, strikes, the CEOs) and flags price moves and news spikes.</p>
     </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><h2>Experience</h2><span class="label">Surface → TD → Data</span></div>
+    <div class="exp-grid">
+    <div class="photos">
+      <figure class="rig">
+        <img src="rig.jpg" alt="David in Halliburton coveralls beside a drilling rig at dusk, holding a downhole tool" width="1100" height="1391" loading="lazy">
+        <figcaption><b>Wellsite</b> · Halliburton, Colombia</figcaption>
+      </figure>
+    </div>
+    <div class="log" role="list">
+      <div class="log-head" aria-hidden="true"><div>Zone</div><div></div><div>Role</div></div>
+      <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
+        <div class="entry"><h3>Cathodic protection</h3><span class="org">ATP Ingeniería</span></div></div>
+      <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
+        <div class="entry"><h3>Pipeline integrity &amp; QA</h3><span class="org">Tubular Running and Rental Services</span></div></div>
+      <div class="zone" role="listitem"><div class="depth">Wellsite</div><div class="track"></div>
+        <div class="entry"><h3>Company man assistant</h3><span class="org">Ecopetrol / Consultec</span></div></div>
+      <div class="zone" role="listitem"><div class="depth">Downhole</div><div class="track"></div>
+        <div class="entry"><h3>LWD / MWD &amp; directional drilling</h3><span class="org">Halliburton</span></div></div>
+      <div class="zone" role="listitem"><div class="depth">Formation</div><div class="track"></div>
+        <div class="entry"><h3>Log analyst</h3><span class="org">Halliburton</span></div></div>
+      <div class="zone z-data" role="listitem"><div class="depth">Data</div><div class="track"></div>
+        <div class="entry"><h3>MSc Predictive Analytics, major in Finance &amp; Investment</h3><span class="org">Curtin University · 2026</span></div></div>
+    </div>
+    </div>
   </section>
 
   <section id="data-science">
@@ -373,32 +340,6 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
     </div>
   </section>
 
-  <section id="experience">
-    <div class="sec-head"><h2>Experience</h2><span class="label">Surface → TD → Data</span></div>
-    <div class="exp-grid">
-    <div class="photos">
-      <figure class="rig">
-        <img src="rig.jpg" alt="David in Halliburton coveralls beside a drilling rig at dusk, holding a downhole tool" width="1100" height="1391" loading="lazy">
-        <figcaption><b>Wellsite</b> · Halliburton, Colombia</figcaption>
-      </figure>
-    </div>
-    <div class="log" role="list">
-      <div class="log-head" aria-hidden="true"><div>Zone</div><div></div><div>Role</div></div>
-      <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
-        <div class="entry"><h3>Cathodic protection</h3><span class="org">ATP Ingeniería</span></div></div>
-      <div class="zone" role="listitem"><div class="depth">Surface</div><div class="track"></div>
-        <div class="entry"><h3>Pipeline integrity &amp; QA</h3><span class="org">Tubular Running and Rental Services</span></div></div>
-      <div class="zone" role="listitem"><div class="depth">Wellsite</div><div class="track"></div>
-        <div class="entry"><h3>Company man assistant</h3><span class="org">Ecopetrol / Consultec</span></div></div>
-      <div class="zone" role="listitem"><div class="depth">Downhole</div><div class="track"></div>
-        <div class="entry"><h3>LWD / MWD &amp; directional drilling</h3><span class="org">Halliburton</span></div></div>
-      <div class="zone" role="listitem"><div class="depth">Formation</div><div class="track"></div>
-        <div class="entry"><h3>Log analyst</h3><span class="org">Halliburton</span></div></div>
-      <div class="zone z-data" role="listitem"><div class="depth">Data</div><div class="track"></div>
-        <div class="entry"><h3>MSc Predictive Analytics, major in Finance &amp; Investment</h3><span class="org">Curtin University · 2026</span></div></div>
-    </div>
-    </div>
-  </section>
 
   <footer>
     <span>David Lindarte Burgos · Petroleum Engineer · Predictive Analytics</span>
