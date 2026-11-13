@@ -243,6 +243,17 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
 .toolbelt dt{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
 .toolbelt dd{margin:0}
 @media (max-width:600px){.ds-stats{grid-template-columns:1fr}.toolbelt{grid-template-columns:1fr; gap:4px}.toolbelt dd{margin-bottom:10px}}
+
+/* Role line, languages and clickable projects */
+.hero .role{margin:-4px 0 0; font-family:var(--mono); font-size:15px; font-weight:500; letter-spacing:.03em; color:#f2c14e; display:flex; flex-wrap:wrap; align-items:center; row-gap:4px}
+.hero .role i{font-style:normal; color:#6b7699; margin:0 10px}
+.proj-hint{margin:0; color:var(--muted); font-size:15px}
+.proj-hint b{color:var(--dash)}
+.proj{position:relative; transition:border-color .15s, transform .15s}
+.proj:hover{border-color:var(--dash); border-left-color:var(--dash)}
+.proj .dash::after{content:""; position:absolute; inset:0}
+.dash:focus-visible{outline:2px solid var(--dash); outline-offset:3px}
+@media (prefers-reduced-motion: no-preference){.proj:hover{transform:translateY(-1px)}}
 </style>
 </head>
 <body>
@@ -253,6 +264,7 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
     <div class="hero-text">
       <span class="label">Petroleum engineering · Data science · Finance</span>
       <h1>David Lindarte Burgos</h1>
+      <p class="role">Data Engineer<i>|</i>Python<i>|</i>SQL<i>|</i>Energy &amp; Industrial Data</p>
       <p class="lede">Petroleum engineer turned <em>energy data scientist</em>, with hands-on experience from the wellbore to finance analytics.</p>
       <div class="links">
         <a class="btn primary" href="https://github.com/DavidLindarte">GitHub</a>
@@ -266,30 +278,31 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
       <div class="fact"><b>~5 years</b><span>Upstream oil &amp; gas</span></div>
       <div class="fact"><b>MSc Predictive Analytics</b><span>Major in Finance &amp; Investment · Curtin University</span></div>
       <div class="fact"><b>Petroleum Engineer</b><span>Universidad de América</span></div>
-      <div class="fact"><b>ES · EN</b><span>Bilingual</span></div>
+      <div class="fact"><b>Languages</b><span>English C1 · Spanish native</span></div>
     </div>
   </header>
 
   <section id="projects">
     <div class="sec-head"><h2>Projects</h2><span class="label">R · Python</span></div>
+    <p class="proj-hint">Each project runs as a live dashboard. <b>Click any project</b> or its green button to open it in a new tab.</p>
     <div class="proj-list">
     <article class="proj">
-      <div class="proj-head"><h3>JKM LNG price forecasting</h3><a class="dash" href="https://davidlindarte.github.io/jkm-lng-forecasting/">Dashboard ↗</a></div>
+      <div class="proj-head"><h3>JKM LNG price forecasting</h3><a class="dash" target="_blank" rel="noopener" href="https://davidlindarte.github.io/jkm-lng-forecasting/">Dashboard ↗</a></div>
       <div class="kicker"><span class="label">LNG markets</span><span class="label">R</span><span class="label">Research project</span></div>
       <p>Is a spot LNG cargo from Australia fairly priced? A Johansen VECM against ARIMA, XGBoost and a random walk forecasts the Asian benchmark (JKM) from oil, gas hubs and freight.</p>
     </article>
     <article class="proj">
-      <div class="proj-head"><h3>WA State Final Demand forecast</h3><a class="dash" href="https://davidlindarte.github.io/wa-state-final-demand-forecast/">Live forecast ↗</a></div>
+      <div class="proj-head"><h3>WA State Final Demand forecast</h3><a class="dash" target="_blank" rel="noopener" href="https://davidlindarte.github.io/wa-state-final-demand-forecast/">Live forecast ↗</a></div>
       <div class="kicker"><span class="label">Macro forecasting</span><span class="label">R</span><span class="label">Updates quarterly</span></div>
       <p>A four-quarter forecast of Western Australia's economy (household, private and public demand) from ARIMA and VECM models. It is re-estimated automatically after every ABS release.</p>
     </article>
     <article class="proj">
-      <div class="proj-head"><h3>S&amp;P 500 factor portfolio</h3><a class="dash" href="https://davidlindarte.github.io/sp500-carhart-portfolio/">Live dashboard ↗</a></div>
+      <div class="proj-head"><h3>S&amp;P 500 factor portfolio</h3><a class="dash" target="_blank" rel="noopener" href="https://davidlindarte.github.io/sp500-carhart-portfolio/">Live dashboard ↗</a></div>
       <div class="kicker"><span class="label">Equities</span><span class="label">Python</span><span class="label">Group project</span></div>
       <p>A US$10M S&amp;P 500 portfolio built with statistical screening, a Carhart four-factor model and quadratic optimisation. It is tested quarter by quarter against SPY.</p>
     </article>
     <article class="proj">
-      <div class="proj-head"><h3>Energy stock &amp; news monitor</h3><a class="dash" href="https://davidlindarte.github.io/Equity-Commodities-Data-Analysis/">Live monitor ↗</a></div>
+      <div class="proj-head"><h3>Energy stock &amp; news monitor</h3><a class="dash" target="_blank" rel="noopener" href="https://davidlindarte.github.io/Equity-Commodities-Data-Analysis/">Live monitor ↗</a></div>
       <div class="kicker"><span class="label">Personal project</span><span class="label">Python</span><span class="label">Updates every 3 h</span></div>
       <p>Tracks Woodside and Shell share prices alongside Google News volume on the topics that move them (LNG output, accidents, strikes, the CEOs) and flags price moves and news spikes.</p>
     </article>
@@ -388,7 +401,7 @@ footer{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; bo
     <dl class="toolbelt">
       <dt>Python</dt><dd class="chips"><span>pandas</span><span>NumPy</span><span>SciPy</span><span>statsmodels</span><span>scikit-learn</span><span>cvxpy</span><span>yfinance</span></dd>
       <dt>R</dt><dd class="chips"><span>tidyverse</span><span>forecast</span><span>vars</span><span>urca</span><span>tseries</span><span>xgboost</span></dd>
-      <dt>Tools</dt><dd class="chips"><span>Git &amp; GitHub Actions</span><span>Jupyter</span><span>Power BI</span><span>Excel</span></dd>
+      <dt>Tools</dt><dd class="chips"><span>SQL</span><span>Git &amp; GitHub Actions</span><span>Jupyter</span><span>Power BI</span><span>Excel</span></dd>
     </dl>
   </section>
 
